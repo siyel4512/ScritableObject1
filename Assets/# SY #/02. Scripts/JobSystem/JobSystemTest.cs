@@ -36,12 +36,12 @@ public class JobSystemTest : MonoBehaviour
         }
     }
 
-    // 여러개를 동시에 사용
-    struct TestJob2 : IJobParallelFor
+    struct TestJob2 : IJob
     {
-        public void Execute(int index)
+        public void Execute()
         {
-            Debug.Log($"병렬 쓰레드 인덱스 값 : {index}");
+            Debug.LogFormat("현재 쓰레드 : {0}", Thread.CurrentThread.ManagedThreadId);
+            print("작업 했음2");
         }
     }
 }
